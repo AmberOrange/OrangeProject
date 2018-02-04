@@ -18,9 +18,12 @@ InputHandler::CommonButtons keyToCommon(const SDL_Keycode &code);
 
 
 
-void InputHandler::attach(const Subscribe &subscribe)
+void InputHandler::attach(InputObserver *observe, Uint16 subscribeButtons)
 {
-	subscription.push_back(subscribe);
+	subscription.push_back({
+		observe,
+		subscribeButtons
+	});
 }
 
 void InputHandler::handleEvent(const SDL_KeyboardEvent &e)
@@ -33,17 +36,13 @@ void InputHandler::handleEvent(const SDL_KeyboardEvent &e)
 	{
 		if ((subscription[i].subscribeButtons & common) == common)
 		{
-			ButtonEvent bEvent = {
-				common,
-				e.timestamp
-			};
 			if (e.state == SDL_PRESSED)
 			{
-				if(e.repeat == 0 && subscription[i].pressed != nullptr)
-					subscription[i].pressed(bEvent);
+				if(e.repeat == 0)
+					subscription[i].observe->buttonPressed(common, e.timestamp);
 			}
-			else if (subscription[i].released != nullptr)
-				subscription[i].released(bEvent);
+			else
+				subscription[i].observe->buttonReleased(common, e.timestamp);
 			break;
 		}
 	}

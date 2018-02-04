@@ -6,6 +6,7 @@
 #include <SDL_stdinc.h>
 #include <SDL_events.h>
 #include <vector>
+#include "InputObserver.hpp"
 
 namespace InputHandler {
 	enum CommonButtons : Uint16
@@ -20,20 +21,25 @@ namespace InputHandler {
 		RIGHT = 0x0080,
 		ESCAPE = 0x0100
 	};
-	struct ButtonEvent
+	/*struct ButtonEvent
 	{
 		CommonButtons button;
 		Uint32 timestamp;
-	};
-	struct Subscribe
+	};*/
+	/*struct Subscribe
 	{
 		void *id;
 		void(*pressed)(ButtonEvent&);
 		void(*released)(ButtonEvent&);
 		Uint16 subscribeButtons;
+	};*/
+	struct Subscribe
+	{
+		InputObserver *observe;
+		Uint16 subscribeButtons;
 	};
 
-	void attach(const Subscribe &subscribe);
+	void attach(InputObserver *observe, Uint16 subscribeButtons);
 	void handleEvent(const SDL_KeyboardEvent &e);
 	//todo void handleEvent(const SDL_ControllerButtonEvent &e);
 

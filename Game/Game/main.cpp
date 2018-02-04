@@ -6,20 +6,10 @@
 
 #include "EventHandler.hpp"
 #include "InputHandler.hpp"
+#include "Graphics.hpp"
+#include "Player.hpp"
 
 const GLint WIDTH = 800, HEIGHT = 600;
-
-void test_pressed(InputHandler::ButtonEvent &e)
-{
-	std::cout << "Button nr: " << e.button
-		<< " pressed at timestamp: " << e.timestamp << std::endl;
-}
-
-void test_released(InputHandler::ButtonEvent &e)
-{
-	std::cout << "Button nr: " << e.button
-		<< " released at timestamp: " << e.timestamp << std::endl;
-}
 
 int main(int argc, char *argv[])
 {
@@ -29,13 +19,11 @@ int main(int argc, char *argv[])
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 
-	//x SDL_DisplayMode DM;
-	//x SDL_GetCurrentDisplayMode(0, &DM);
+	//SDL_GL_SetSwapInterval(1);
+
 
 	SDL_Window *window = SDL_CreateWindow(
 		"Orange Horizon",
-		//x DM.w / 2 - WIDTH / 2,
-		//x DM.h / 2 - HEIGHT / 2,
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		WIDTH,
@@ -54,33 +42,48 @@ int main(int argc, char *argv[])
 
 	glViewport(0, 0, WIDTH, HEIGHT);
 
-	//! TESTING OF INPUT
-	InputHandler::attach({
-		nullptr,
-		test_pressed,
-		test_released,
-		InputHandler::A | 
-		InputHandler::B
-	});
+	//! TESTING GRAPHICS INIT
+	Graphics graphics;
+	try
+	{
+		graphics.init();
+	}
+	catch (const std::string e)
+	{
+		std::cout << e;
+		std::cin.ignore();
+		return EXIT_FAILURE;
+	}
 
-	SDL_Event windowEvent;
+	//! TESTTING PLAYER
+	Player player;
+
+	//x SDL_Event windowEvent;
+
+	Uint32 lastDelta = SDL_GetTicks();
 
 	while (true)
 	{
-		/*if (SDL_PollEvent(&windowEvent))
+		/*while ((SDL_GetTicks() - lastDelta) < (1000 / 60))
 		{
-			if (windowEvent.type == SDL_QUIT)
-			{
-				break;
-			}
-		}*/
+			SDL_PumpEvents();
+		}
+		lastDelta = SDL_GetTicks();*/
 
 		if (EventHandler::DispatchEvents())
 			break;
 
+		player.update(SDL_GetTicks());
+
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		graphics.useProgram(0);
+		player.draw(graphics);
+
 		SDL_GL_SwapWindow(window);
+		
+		SDL_Delay(1000 / 60);
 	}
 
 	SDL_GL_DeleteContext(context);

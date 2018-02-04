@@ -122,12 +122,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Drawable.hpp" />
     <ClInclude Include="EventHandler.hpp" />
+    <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="InputHandler.hpp" />
+    <ClInclude Include="InputObserver.hpp" />
+    <ClInclude Include="Player.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pass.frag" />
+    <None Include="pass.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
