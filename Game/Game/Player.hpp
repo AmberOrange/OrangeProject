@@ -14,6 +14,8 @@ public:
 	Player();
 	~Player();
 
+	void init();
+
 	virtual void draw(Graphics &rGraphics);
 
 	void update(const Uint32 delta);

@@ -122,18 +122,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainThread.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Drawable.hpp" />
     <ClInclude Include="EventHandler.hpp" />
+    <ClInclude Include="GameLoop.hpp" />
     <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="InputHandler.hpp" />
     <ClInclude Include="InputObserver.hpp" />
+    <ClInclude Include="MainThread.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Window.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="pass.frag" />

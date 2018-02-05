@@ -4,6 +4,14 @@
 
 Player::Player()
 {
+}
+
+Player::~Player()
+{
+}
+
+void Player::init()
+{
 	glGenVertexArrays(1, &this->mVertexID);
 	glBindVertexArray(this->mVertexID);
 	const GLfloat data[] = {
@@ -27,10 +35,6 @@ Player::Player()
 		InputHandler::RIGHT);
 
 	this->mLastDelta = 0;
-}
-
-Player::~Player()
-{
 }
 
 void Player::draw(Graphics &rGraphics)
