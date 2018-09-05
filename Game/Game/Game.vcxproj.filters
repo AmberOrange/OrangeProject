@@ -39,6 +39,9 @@
     <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Compute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EventHandler.hpp">
@@ -68,12 +71,18 @@
     <ClInclude Include="GameLoop.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Compute.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="pass.frag">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="pass.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="pass.comp">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

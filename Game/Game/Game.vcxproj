@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{4F7A67BB-D4D4-4A80-B9B5-F2AFF50489DC}</ProjectGuid>
     <RootNamespace>Game</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Compute.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Graphics.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Compute.hpp" />
     <ClInclude Include="Drawable.hpp" />
     <ClInclude Include="EventHandler.hpp" />
     <ClInclude Include="GameLoop.hpp" />
@@ -142,6 +144,7 @@
     <ClInclude Include="Window.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="pass.comp" />
     <None Include="pass.frag" />
     <None Include="pass.vert" />
   </ItemGroup>

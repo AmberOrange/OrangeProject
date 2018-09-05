@@ -12,6 +12,7 @@ void GameLoop::init(Window *window)
 {
 	this->pWindow = window;
 	this->mGraphics.init();
+	this->mCompute.Init();
 	this->mPlayer.init();
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 }

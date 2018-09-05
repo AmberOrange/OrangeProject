@@ -6,6 +6,7 @@
 #include "Player.hpp"
 #include "Graphics.hpp"
 #include "Window.hpp"
+#include "Compute.hpp"
 
 class GameLoop
 {
@@ -19,6 +20,7 @@ private:
 	Window *pWindow;
 	Player mPlayer;
 	Graphics mGraphics;
+	Compute mCompute;
 };
 
 #endif
